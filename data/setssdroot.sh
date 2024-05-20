@@ -1,8 +1,8 @@
 #!/bin/sh
 # Runs at startup, switches rootfs to the SSD on nvme0 (M.2 Key M slot)
-NVME_DRIVE="/dev/sdb"
+# 
+NVME_DRIVE="/dev/sdb1"
 CHROOT_PATH="/sdroot"
-# Modified above too.
 INITBIN=/lib/systemd/systemd
 EXT4_OPT="-o defaults -o errors=remount-ro -o discard"
 

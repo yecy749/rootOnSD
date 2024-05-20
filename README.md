@@ -1,4 +1,18 @@
-# rootOnNVMe
+
+# Summary
+This repo is forked, with some modification added.
+I have successfully used this method to alter my boot device from emmc mem to a thumb drive(actually SD card with adapter).
+
+It is on a industrial-distribution Xavier-NX board, no nvme slot available, and TF slot is not functionin somehow.
+
+# Notice
+
+You need to make sure that drive (SD card, thumb drive, or SSD) is formatted into ext4, and you have patitioned it. 
+The table should be in GPT format.
+Normally the disk you specify need to the partition of one disk, where you put your alt system on.
+
+
+# Original Readme: rootOnNVMe
 Switch the rootfs to a NVMe SSD on the Jetson Xavier NX and Jetson AGX Xavier
 
 These scripts install a service which runs at startup to point the rootfs to a SSD installed on /dev/nvme0 (the M.2 Key M slot).
@@ -6,6 +20,8 @@ These scripts install a service which runs at startup to point the rootfs to a S
 This is taken from the NVIDIA Jetson AGX Xavier forum https://forums.developer.nvidia.com/t/how-to-boot-from-nvme-ssd/65147/22, written by user crazy_yorik (https://forums.developer.nvidia.com/u/crazy_yorick). Thank you crazy_yorik!
 
 This procedure should be done on a fresh install of the SD card using JetPack 4.3+. Install the SSD into the M.2 Key M slot of the Jetson, and format it gpt, ext4, and setup a partition (p1). The AGX Xavier uses eMMC, the Xavier NX uses a SD card in the boot sequence.
+
+
 
 Next, copy the rootfs of the eMMC/SD card to the SSD
 ```
