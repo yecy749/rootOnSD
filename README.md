@@ -28,8 +28,13 @@ b. Transferring the whole filesystem to ext devices is what we mostly do here.
 1. Make sure, the external storage device is formatted into ext4 filesystem, GPT is created. 
 2. Make sure the device is partitioned. Use the gparted as described as in other blogs, (I usually partition into 1 partition). 
 3. When mounting the external device, we need to use the /dev/sdb1 instead of /dev/sdb. (example) We use the partition. 
-4. 
+4. Make sure the connection of external device is very ok.
+# **Very important**: change the target device to your own: 
 
+1. line 4 in copy-rootfs-ssd.sh
+2. line 4 in data/setssdroot.sh
+
+ 
 
 You need to make sure that drive (SD card, thumb drive, or SSD) is formatted into ext4, and you have patitioned it. 
 The table should be in GPT format.
