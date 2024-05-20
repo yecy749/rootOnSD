@@ -1,11 +1,35 @@
+# Guide: Flashing Jetson Motherboard Xavier NX to run YOLOv8
+## Summary
+This Repo provides a solution to transfer the whole file system of Xavier NX from emmc memory (onboard), to external devices.
 
-# Summary
+## 
 This repo is forked, with some modification added.
 I have successfully used this method to alter my boot device from emmc mem to a thumb drive(actually SD card with adapter).
 
 It is on a industrial-distribution Xavier-NX board, no nvme slot available, and TF slot is not functionin somehow.
+## Prerequisites
+1. We use NVIDIA SDK manager to flash Xavier-NX, the user guide is provided by Nvidia, which is sort of easy to use.
+2. My board does not support NVmE device
+
+## Bullet points
+### 1. Jetpack 4 is not able to run yolov8 since its python version does not meet the requirements (>=3.8)
+Although some other alternatives such as a certain .whl is provided by some developer to install ultralytics on python3.6, the Jetpack 4 faces errors on the version of torch and torchvision, though it's checked right.
+
+### 2. Flashing Jetpack 6 to Xavier NX is tricky:
+a. The on board memory is not sufficient for all the required packages. The SDK componenets need to be installed after we alter the boot driver to some larger devices.
+
+b. Transferring the whole filesystem to ext devices is what we mostly do here.
 
 # Notice
+## Flashing Xavier to new Jetpack
+1. Nvidia provides detailed manual, check the website.
+2. Do not flash the SDK components before altering the boot device
+## Altering boot device
+1. Make sure, the external storage device is formatted into ext4 filesystem, GPT is created. 
+2. Make sure the device is partitioned. Use the gparted as described as in other blogs, (I usually partition into 1 partition). 
+3. When mounting the external device, we need to use the /dev/sdb1 instead of /dev/sdb. (example) We use the partition. 
+4. 
+
 
 You need to make sure that drive (SD card, thumb drive, or SSD) is formatted into ext4, and you have patitioned it. 
 The table should be in GPT format.
